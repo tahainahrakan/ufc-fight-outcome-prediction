@@ -1,5 +1,6 @@
 # UFC Fight Outcome Prediction
 
+[![Live demo](https://img.shields.io/badge/live%20demo-online-brightgreen)](https://ufc-fight-predictor-osdb.onrender.com)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Model](https://img.shields.io/badge/model-calibrated%20logistic%20regression-orange)
@@ -9,6 +10,9 @@ Predicts UFC fight outcomes — **win probability, betting odds, and finish meth
 self-updating scrape of [ufcstats.com](http://ufcstats.com). Built end-to-end: a resilient
 scraper, a leakage-audited feature pipeline, a Logistic-Regression-vs-XGBoost study, and a
 Flask app that quotes any hypothetical matchup.
+
+**▶ Live demo: https://ufc-fight-predictor-osdb.onrender.com** — free tier, so the first load
+after a while may take ~30–60s to wake.
 
 ![UFC Fight Predictor — the app](assets/screenshot.png)
 
@@ -132,7 +136,7 @@ bios (name, height, reach, record).
 
 ## Roadmap
 
-- [ ] Live public demo URL (Render / Fly / Hugging Face)
+- [x] Live public demo — [deployed on Render](https://ufc-fight-predictor-osdb.onrender.com)
 - [ ] Betting backtest — does the calibrated model beat closing sportsbook lines?
 - [ ] Test suite + CI guarding the leakage & corner-invariance properties
 
