@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environment
+.venv/
+venv/
+
+# Scraper HTML cache — regenerable, grows unbounded (never commit)
+data/_html_cache/
+
+# Logs
+logs/
+*.log
+
+# OS / editor / tooling
+.DS_Store
+.env
+.idea/
+.vscode/
+.claude/

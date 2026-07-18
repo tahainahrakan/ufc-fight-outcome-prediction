@@ -1,0 +1,20 @@
+# Tunable settings for the UFC fight-outcome pipeline and app.
+#
+# These are the knobs you actually change. Structural things (data paths, model
+# filenames, the method/division vocabularies) live in src/config.py, which reads
+# this file at import time. Missing keys fall back to the defaults in src/config.py.
+
+scraping:
+  base_url: http://ufcstats.com
+  min_delay: 1.0          # polite pause between live requests, seconds (low end)
+  max_delay: 2.0          # ...and the high end; each request waits a random point between
+
+model:
+  rng_seed: 42            # seeds the corner-swap and every estimator, for reproducibility
+  elo_base: 1500.0        # starting Elo for a debuting fighter
+  elo_k: 32.0             # Elo update step size
+  holdout_months: 12      # rolling temporal holdout = the most recent N months of data
+
+app:
+  host: 127.0.0.1
+  port: 5001

@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UFC Fight Predictor</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page:        #f9f9f7;
+    --surface:     #fcfcfb;
+    --ink:         #0b0b0b;
+    --ink-2:       #52514e;
+    --muted:       #898781;
+    --hairline:    #e1e0d9;
+    --border:      rgba(11,11,11,0.10);
+    --corner-a:    #2a78d6;   /* fighter A — blue corner (validated) */
+    --corner-b:    #e34948;   /* fighter B — red corner (validated) */
+    --bar-neutral: #898781;   /* finish-method bars: neither fighter's color */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page:        #0d0d0d;
+      --surface:     #1a1a19;
+      --ink:         #ffffff;
+      --ink-2:       #c3c2b7;
+      --muted:       #898781;
+      --hairline:    #2c2c2a;
+      --border:      rgba(255,255,255,0.10);
+      --corner-a:    #3987e5;
+      --corner-b:    #e66767;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 20px 64px; }
+  h1 { font-size: 26px; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 13px; margin: 0 0 28px; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 24px; margin-bottom: 20px;
+  }
+  .pickers { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: end; }
+  .picker label { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .dot.a { background: var(--corner-a); }
+  .dot.b { background: var(--corner-b); }
+  .picker input, select {
+    width: 100%; padding: 9px 11px; font: inherit; color: var(--ink);
+    background: var(--page); border: 1px solid var(--hairline); border-radius: 7px;
+  }
+  .vs { color: var(--muted); font-weight: 700; font-size: 13px; padding-bottom: 11px; }
+
+  /* ── fighter combobox ── */
+  .picker { position: relative; }
+  .combo-wrap { position: relative; }
+  .combo-wrap input { padding-right: 34px; }
+  .picker input:focus { outline: 2px solid var(--corner-a); outline-offset: 1px; border-color: transparent; }
+  .picker.side-b input:focus { outline-color: var(--corner-b); }
+  .picker input.picked { border-color: var(--corner-a); }
+  .picker.side-b input.picked { border-color: var(--corner-b); }
+  .combo-clear {
+    position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+    width: 28px; height: 28px; margin: 0; padding: 0; display: none;
+    align-items: center; justify-content: center;
+    background: transparent; border: 0; border-radius: 6px;
+    color: var(--muted); font-size: 15px; line-height: 1; cursor: pointer;
+  }
+  .combo-clear:hover { color: var(--ink); background: var(--hairline); filter: none; }
+  .combo-clear.show { display: flex; }
+  .dropdown {
+    position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 40;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    max-height: 316px; overflow-y: auto; overscroll-behavior: contain;
+    display: none; padding: 4px;
+  }
+  .dropdown.open { display: block; }
+  @media (prefers-reduced-motion: no-preference) {
+    .dropdown.open { animation: drop 120ms ease-out; }
+    @keyframes drop { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+  }
+  .opt {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 8px 10px; min-height: 44px; border-radius: 7px; cursor: pointer;
+  }
+  .opt .oname { font-weight: 600; font-size: 14px; }
+  .opt .oname mark { background: transparent; color: inherit; text-decoration: underline;
+                     text-decoration-thickness: 2px; text-underline-offset: 2px; }
+  .opt .osub { color: var(--muted); font-size: 12px; margin-top: 1px; }
+  .opt .oelo { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; flex: none; }
+  .opt.active { background: var(--hairline); }
+  .opt.active .oelo, .opt.active .osub { color: var(--ink-2); }
+  .dd-note { padding: 8px 10px; color: var(--muted); font-size: 12px; }
+  .dd-note b { color: var(--ink-2); font-weight: 600; }
+  .dd-div {
+    margin-top: 4px; padding: 8px 10px 3px; border-top: 1px solid var(--hairline);
+    color: var(--muted); font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .05em;
+  }
+  .controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 18px; }
+  .controls .division { min-width: 220px; }
+  .check { display: flex; align-items: center; gap: 7px; font-size: 14px; color: var(--ink-2); }
+  button {
+    padding: 10px 22px; font: inherit; font-weight: 600;
+    color: #fff; background: var(--corner-a); border: 0; border-radius: 7px; cursor: pointer;
+  }
+  button:hover { filter: brightness(1.08); }
+  .btn-ghost {
+    margin-left: auto; color: var(--ink-2); background: transparent;
+    border: 1px solid var(--hairline);
+  }
+  .btn-ghost:hover { filter: none; color: var(--ink); background: var(--hairline); }
+  .error { color: var(--corner-b); font-size: 13px; margin-top: 10px; display: none; }
+
+  /* ── result ── */
+  #result { display: none; }
+  .matchup-names { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+  .fighter-head { display: flex; align-items: baseline; gap: 8px; }
+  .fighter-head.right { flex-direction: row-reverse; text-align: right; }
+  .fighter-head .name { font-weight: 700; font-size: 17px; }
+  .fighter-head .meta { color: var(--muted); font-size: 12px; }
+  .probs { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .probs span { font-size: 24px; font-weight: 700; }
+
+  /* split win-probability meter: 2px gap, 4px rounded outer ends */
+  .meter { display: flex; gap: 2px; height: 20px; margin-bottom: 10px; }
+  .meter .seg-a { background: var(--corner-a); border-radius: 4px 0 0 4px; }
+  .meter .seg-b { background: var(--corner-b); border-radius: 0 4px 4px 0; }
+  .fav-line { color: var(--ink-2); font-size: 14px; margin: 2px 0 0; }
+  .fav-line b { color: var(--ink); }
+
+  h2 { font-size: 14px; color: var(--ink-2); margin: 26px 0 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .finish-row { display: grid; grid-template-columns: 110px 1fr 52px; gap: 10px; align-items: center; margin-bottom: 8px; }
+  .finish-row .lbl { font-size: 14px; color: var(--ink-2); }
+  .finish-row .track { height: 14px; background: var(--hairline); border-radius: 4px; overflow: hidden; }
+  .finish-row .fill { height: 100%; background: var(--bar-neutral); border-radius: 4px; }
+  .finish-row .val { font-size: 13px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ── tale of the tape ── */
+  .tott-row { display: grid; grid-template-columns: 1fr 140px 1fr; align-items: center;
+              padding: 8px 0; border-top: 1px solid var(--hairline); }
+  .tott-row:first-child { border-top: 0; }
+  .tott .va, .tott .vb { font-size: 15px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .tott .va { text-align: right; }
+  .tott .vb { text-align: left; }
+  .tott .lbl { text-align: center; color: var(--muted); font-size: 11px;
+               text-transform: uppercase; letter-spacing: .04em; }
+  .tott .va.win .num { color: var(--corner-a); font-weight: 700; }
+  .tott .vb.win .num { color: var(--corner-b); font-weight: 700; }
+  .tott .est { color: var(--muted); font-size: 11px; font-weight: 400; }
+
+  /* ── head-to-head ── */
+  .h2h-summary { color: var(--ink-2); font-size: 14px; margin: 0 0 10px; }
+  .h2h-row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline;
+             padding: 8px 0; border-top: 1px solid var(--hairline); font-size: 14px; }
+  .h2h-row:first-of-type { border-top: 0; }
+  .h2h-row .who { color: var(--ink-2); }
+  .h2h-row .who b.a { color: var(--corner-a); }
+  .h2h-row .who b.b { color: var(--corner-b); }
+  .h2h-row .when { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* ── share + loading + empty ── */
+  .share { margin-top: 20px; }
+  .btn-link { padding: 6px 12px; font-size: 13px; font-weight: 500;
+              color: var(--ink-2); background: transparent; border: 1px solid var(--hairline); border-radius: 6px; }
+  .btn-link:hover { filter: none; color: var(--ink); background: var(--hairline); }
+  button:disabled { opacity: .6; cursor: default; }
+  .spinner { display: inline-block; width: 12px; height: 12px; vertical-align: -1px; margin-right: 7px;
+             border: 2px solid rgba(255,255,255,.45); border-top-color: #fff; border-radius: 50%;
+             animation: spin .6s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #empty_state { color: var(--muted); font-size: 14px; text-align: center; }
+  #empty_state b { color: var(--ink-2); }
+  @media (prefers-reduced-motion: no-preference) {
+    #result.show { animation: reveal 220ms ease-out; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  }
+  @media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 1.6s; } }
+
+  @media (max-width: 640px) {
+    .pickers { grid-template-columns: 1fr; } .vs { display: none; }
+    .tott-row { grid-template-columns: 1fr 96px 1fr; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>UFC Fight Predictor</h1>
+  <p class="sub">Calibrated logistic regression · {{ n_fighters }} fighters · trained through {{ trained_through }} · retrains itself weekly</p>
+
+  <div class="card">
+    <div class="pickers">
+      <div class="picker">
+        <label for="fa"><span class="dot a"></span>Fighter A</label>
+        <div class="combo-wrap">
+          <input id="fa" placeholder="Search fighter…" autocomplete="off" spellcheck="false"
+                 role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="dd_a">
+          <button class="combo-clear" id="clr_a" aria-label="Clear fighter A" tabindex="-1">×</button>
+        </div>
+        <div class="dropdown" id="dd_a" role="listbox" aria-label="Fighter A results"></div>
+      </div>
+      <div class="vs">VS</div>
+      <div class="picker side-b">
+        <label for="fb"><span class="dot b"></span>Fighter B</label>
+        <div class="combo-wrap">
+          <input id="fb" placeholder="Search fighter…" autocomplete="off" spellcheck="false"
+                 role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="dd_b">
+          <button class="combo-clear" id="clr_b" aria-label="Clear fighter B" tabindex="-1">×</button>
+        </div>
+        <div class="dropdown" id="dd_b" role="listbox" aria-label="Fighter B results"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <select id="division" class="division" aria-label="Division">
+        {% for d in divisions %}<option{% if d == 'Lightweight' %} selected{% endif %}>{{ d }}</option>{% endfor %}
+      </select>
+      <label class="check"><input type="checkbox" id="title_fight"> Title fight (5 rounds)</label>
+      <button id="clear_all" class="btn-ghost">Clear</button>
+      <button id="go">Predict</button>
+    </div>
+    <p class="error" id="err"></p>
+  </div>
+
+  <div class="card" id="empty_state">Pick two fighters and hit <b>Predict</b> to see the matchup.</div>
+
+  <div class="card" id="result">
+    <div class="matchup-names">
+      <div class="fighter-head"><span class="dot a"></span><span class="name" id="name_a"></span><span class="meta" id="meta_a"></span></div>
+      <div class="fighter-head right"><span class="dot b"></span><span class="name" id="name_b"></span><span class="meta" id="meta_b"></span></div>
+    </div>
+    <div class="probs"><span id="pct_a"></span><span id="pct_b"></span></div>
+    <div class="meter" role="img" aria-label="win probability split">
+      <div class="seg-a" id="seg_a"></div>
+      <div class="seg-b" id="seg_b"></div>
+    </div>
+    <p class="fav-line" id="fav"></p>
+
+    <h2>Most likely finish</h2>
+    <div id="finish"></div>
+
+    <h2>Tale of the tape</h2>
+    <div class="tott" id="tott"></div>
+
+    <div id="h2h_block" style="display:none">
+      <h2>Previous meetings</h2>
+      <p class="h2h-summary" id="h2h_summary"></p>
+      <div id="h2h_rows"></div>
+    </div>
+
+    <div class="share"><button class="btn-link" id="copy_link">Copy link</button></div>
+  </div>
+</main>
+
+<script>
+  const FIGHTERS = {{ fighters_json|safe }};
+  const TOP = [...FIGHTERS].sort((x, y) => y.elo - x.elo);   // default suggestions
+  const byId = new Map(FIGHTERS.map(f => [f.id, f]));        // deep-link lookup
+  const MAX_OPTS = 50;
+
+  const $ = id => document.getElementById(id);
+  const err = msg => { const e = $('err'); e.textContent = msg || ''; e.style.display = msg ? 'block' : 'none'; };
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  function makeCombo(inputId, ddId, clearId, onSelect) {
+    const input = $(inputId), dd = $(ddId), clear = $(clearId);
+    let sel = null, items = [], active = -1;
+
+    const highlight = (name, q) => {
+      if (!q) return esc(name);
+      const i = name.toLowerCase().indexOf(q.toLowerCase());
+      if (i < 0) return esc(name);
+      return esc(name.slice(0, i)) + '<mark>' + esc(name.slice(i, i + q.length)) + '</mark>' + esc(name.slice(i + q.length));
+    };
+
+    function render(q) {
+      // scope results to the selected weight class; typed search still reaches
+      // every fighter, with off-division matches grouped under a divider
+      const div = $('division').value;
+      const ql = q.toLowerCase();
+      // men's division selected -> men only; women's division -> women only
+      const womens = div.startsWith("Women's");
+      const pool = FIGHTERS.filter(f => f.division.startsWith("Women's") === womens);
+      const rank = (x, y) => {
+        const px = x.name.toLowerCase().startsWith(ql) ? 0 : 1;
+        const py = y.name.toLowerCase().startsWith(ql) ? 0 : 1;
+        return px - py || y.elo - x.elo;
+      };
+      let inDiv, outDiv;
+      if (q) {
+        const hits = pool.filter(f => f.name.toLowerCase().includes(ql));
+        inDiv  = hits.filter(f => f.division === div).sort(rank);
+        outDiv = hits.filter(f => f.division !== div).sort(rank);
+      } else {
+        inDiv  = TOP.filter(f => f.division === div);
+        outDiv = [];
+      }
+      items = inDiv.concat(outDiv).slice(0, MAX_OPTS);
+      const nIn = Math.min(inDiv.length, items.length);
+      active = -1;
+      const opt = (f, i) => `
+        <div class="opt" role="option" id="${ddId}_o${i}" data-i="${i}" aria-selected="false">
+          <div><div class="oname">${highlight(f.name, q)}</div>
+               <div class="osub">${esc(f.record)} · ${esc(f.division)}</div></div>
+          <span class="oelo">Elo ${f.elo}</span>
+        </div>`;
+      let html = '';
+      if (!q) html += `<div class="dd-note"><b>Top ranked · ${esc(div)}</b> — type to search all ${pool.length} fighters</div>`;
+      if (!items.length) html += `<div class="dd-note">No fighters match “${esc(q)}”</div>`;
+      html += items.slice(0, nIn).map((f, i) => opt(f, i)).join('');
+      if (items.length > nIn) {
+        html += '<div class="dd-div">Other divisions</div>';
+        html += items.slice(nIn).map((f, i) => opt(f, nIn + i)).join('');
+      }
+      dd.innerHTML = html;
+      dd.querySelectorAll('.opt').forEach(el => {
+        el.addEventListener('pointerdown', e => { e.preventDefault(); choose(+el.dataset.i); });
+        el.addEventListener('mousemove', () => setActive(+el.dataset.i));
+      });
+      open();
+    }
+
+    const open  = () => { dd.classList.add('open');  input.setAttribute('aria-expanded', 'true');  };
+    const close = () => { dd.classList.remove('open'); input.setAttribute('aria-expanded', 'false');
+                          input.removeAttribute('aria-activedescendant'); active = -1; };
+
+    function setActive(i) {
+      dd.querySelectorAll('.opt').forEach(el => { el.classList.remove('active'); el.setAttribute('aria-selected', 'false'); });
+      active = i;
+      if (i >= 0 && items[i]) {
+        const el = dd.querySelector(`[data-i="${i}"]`);
+        el.classList.add('active'); el.setAttribute('aria-selected', 'true');
+        el.scrollIntoView({ block: 'nearest' });
+        input.setAttribute('aria-activedescendant', el.id);
+      }
+    }
+
+    function choose(i) {
+      if (!items[i]) return;
+      sel = items[i];
+      input.value = sel.name;
+      input.classList.add('picked');
+      clear.classList.add('show');
+      close();
+      onSelect && onSelect(sel);
+    }
+
+    function reset(refocus) {
+      sel = null; input.value = '';
+      input.classList.remove('picked'); clear.classList.remove('show');
+      close();
+      if (refocus) { input.focus(); render(''); }
+    }
+
+    function set(f) {          // programmatic selection (deep-link restore)
+      if (!f) return;
+      sel = f; input.value = f.name;
+      input.classList.add('picked'); clear.classList.add('show'); close();
+      onSelect && onSelect(f);
+    }
+
+    input.addEventListener('focus', () => render(input.value.trim()));
+    input.addEventListener('input', () => {
+      sel = null; input.classList.remove('picked');
+      clear.classList.toggle('show', !!input.value);
+      render(input.value.trim());
+    });
+    input.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); if (!dd.classList.contains('open')) render(input.value.trim()); setActive(Math.min(active + 1, items.length - 1)); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(Math.max(active - 1, 0)); }
+      else if (e.key === 'Enter') { e.preventDefault(); if (active >= 0) choose(active); else if (items.length === 1) choose(0); }
+      else if (e.key === 'Escape') { close(); }
+      else if (e.key === 'Tab') { close(); }
+    });
+    clear.addEventListener('click', () => reset(true));
+    document.addEventListener('pointerdown', e => { if (!input.parentElement.parentElement.contains(e.target)) close(); });
+
+    return { get: () => sel, reset: () => reset(false), set,
+             isOpen: () => dd.classList.contains('open') };
+  }
+
+  // picking fighter A defaults the division to their current one
+  const comboA = makeCombo('fa', 'dd_a', 'clr_a', f => {
+    if ([...$('division').options].some(o => o.value === f.division)) $('division').value = f.division;
+  });
+  const comboB = makeCombo('fb', 'dd_b', 'clr_b');
+
+  // manually changing weight class starts a fresh matchup (auto-set from picking
+  // fighter A doesn't fire 'change', so it never wipes the pick that caused it)
+  const resetMatchup = () => {
+    comboA.reset(); comboB.reset();
+    err('');
+    $('result').style.display = 'none'; $('result').classList.remove('show');
+    $('empty_state').style.display = 'block';
+    history.replaceState(null, '', location.pathname);
+  };
+  $('division').addEventListener('change', resetMatchup);
+  $('clear_all').addEventListener('click', resetMatchup);
+
+  // ── tale of the tape ──
+  function tottRow(label, dispA, dispB, cmpA, cmpB, dir) {
+    let wa = false, wb = false;
+    if (dir && cmpA != null && cmpB != null && cmpA !== cmpB) {
+      const aWins = dir === 'high' ? cmpA > cmpB : cmpA < cmpB;
+      wa = aWins; wb = !aWins;
+    }
+    return `<div class="tott-row">
+      <div class="va${wa ? ' win' : ''}"><span class="num">${dispA}</span></div>
+      <div class="lbl">${esc(label)}</div>
+      <div class="vb${wb ? ' win' : ''}"><span class="num">${dispB}</span></div></div>`;
+  }
+  function renderTott(a, b) {
+    const reach = f => f.reach == null ? '—'
+      : `${f.reach}"${f.reach_est ? ' <span class="est">est</span>' : ''}`;
+    const rows = [
+      tottRow('Record', esc(a.record), esc(b.record), null, null, null),
+      tottRow('Age', a.age == null ? '—' : a.age.toFixed(1), b.age == null ? '—' : b.age.toFixed(1), a.age, b.age, 'low'),
+      tottRow('Height', a.height_in == null ? '—' : esc(a.height), b.height_in == null ? '—' : esc(b.height), a.height_in, b.height_in, 'high'),
+      tottRow('Reach', reach(a), reach(b), a.reach, b.reach, 'high'),
+      tottRow('Elo', a.elo, b.elo, a.elo, b.elo, 'high'),
+      tottRow('Win streak', a.streak, b.streak, a.streak, b.streak, 'high'),
+      tottRow('Sig. strikes / fight', a.sig_strikes.toFixed(1), b.sig_strikes.toFixed(1), a.sig_strikes, b.sig_strikes, 'high'),
+      tottRow('Takedowns / fight', a.takedowns.toFixed(2), b.takedowns.toFixed(2), a.takedowns, b.takedowns, 'high'),
+      tottRow('Finish rate', a.finish_rate + '%', b.finish_rate + '%', a.finish_rate, b.finish_rate, 'high'),
+    ];
+    $('tott').innerHTML = rows.join('');
+  }
+
+  // ── head-to-head ──
+  function renderH2h(h2h, nameA, nameB) {
+    const block = $('h2h_block');
+    if (!h2h || !h2h.meetings || !h2h.meetings.length) { block.style.display = 'none'; return; }
+    let sum = h2h.summary;
+    if (sum.startsWith('A ')) sum = nameA + sum.slice(1);
+    else if (sum.startsWith('B ')) sum = nameB + sum.slice(1);
+    $('h2h_summary').textContent = sum;
+    $('h2h_rows').innerHTML = h2h.meetings.map(m => {
+      const wName = m.winner === 'A' ? nameA : nameB;
+      const lName = m.winner === 'A' ? nameB : nameA;
+      const cls = m.winner === 'A' ? 'a' : 'b';
+      return `<div class="h2h-row">
+        <span class="who"><b class="${cls}">${esc(wName)}</b> def. ${esc(lName)} · ${esc(m.method)}</span>
+        <span class="when">${esc(m.date)}</span></div>`;
+    }).join('');
+    block.style.display = 'block';
+  }
+
+  function renderResult(d) {
+    const pa = d.p_fighter_a, pb = 1 - pa;
+    $('name_a').textContent = d.fighter_a.name;  $('meta_a').textContent = d.fighter_a.record;
+    $('name_b').textContent = d.fighter_b.name;  $('meta_b').textContent = d.fighter_b.record;
+    $('pct_a').textContent = (pa * 100).toFixed(1) + '%';
+    $('pct_b').textContent = (pb * 100).toFixed(1) + '%';
+    $('seg_a').style.flex = pa;  $('seg_b').style.flex = pb;
+    const fav = d.favorite === 'A' ? d.fighter_a.name : d.fighter_b.name;
+    $('fav').innerHTML = `Favorite: <b>${esc(fav)}</b> at ${(d.fav_win_prob * 100).toFixed(1)}% ` +
+      `— American ${d.fav_american_odds > 0 ? '+' : ''}${d.fav_american_odds}, decimal ${d.fav_decimal_odds}`;
+    $('finish').innerHTML = Object.entries(d.finish_method).map(([k, v]) => `
+      <div class="finish-row">
+        <span class="lbl">${esc(k)}</span>
+        <div class="track"><div class="fill" style="width:${(v * 100).toFixed(1)}%"></div></div>
+        <span class="val">${(v * 100).toFixed(1)}%</span>
+      </div>`).join('');
+    renderTott(d.fighter_a, d.fighter_b);
+    renderH2h(d.h2h, d.fighter_a.name, d.fighter_b.name);
+
+    $('empty_state').style.display = 'none';
+    const r = $('result');
+    r.style.display = 'block';
+    r.classList.remove('show'); void r.offsetWidth; r.classList.add('show');   // restart reveal
+  }
+
+  function writeUrl(p) {
+    const q = new URLSearchParams({ a: p.fighter_a, b: p.fighter_b,
+                                    div: p.division, title: p.title_fight ? 1 : 0 });
+    history.replaceState(null, '', '?' + q.toString());
+  }
+
+  async function runPrediction() {
+    err('');
+    const a = comboA.get(), b = comboB.get();
+    if (!a || !b) return err('Pick both fighters from the list.');
+    const go = $('go');
+    go.disabled = true; go.innerHTML = '<span class="spinner"></span>Predicting…';
+    const payload = { fighter_a: a.id, fighter_b: b.id,
+                      division: $('division').value, title_fight: $('title_fight').checked };
+    try {
+      const res = await fetch('/api/predict', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      });
+      const d = await res.json();
+      if (!res.ok) return err(d.error || 'Prediction failed.');
+      renderResult(d);
+      writeUrl(payload);
+    } catch (e) {
+      err('Network error — try again.');
+    } finally {
+      go.disabled = false; go.textContent = 'Predict';
+    }
+  }
+  $('go').addEventListener('click', runPrediction);
+
+  // Enter anywhere submits, once both fighters are picked and no dropdown is capturing it
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' || comboA.isOpen() || comboB.isOpen()) return;
+    if (comboA.get() && comboB.get()) { e.preventDefault(); runPrediction(); }
+  });
+
+  // copy a shareable link to this exact matchup
+  $('copy_link').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(location.href);
+      const el = $('copy_link'); el.textContent = 'Copied!';
+      setTimeout(() => { el.textContent = 'Copy link'; }, 1500);
+    } catch (e) { /* clipboard blocked — no-op */ }
+  });
+
+  // deep link: /?a=<id>&b=<id>&div=<division>&title=<0|1> auto-runs the prediction
+  (function initFromUrl() {
+    const q = new URLSearchParams(location.search);
+    const a = byId.get(q.get('a')), b = byId.get(q.get('b'));
+    if (!a || !b) return;
+    comboA.set(a); comboB.set(b);            // set() runs A's onSelect (sets division)…
+    const div = q.get('div');
+    if (div && [...$('division').options].some(o => o.value === div)) $('division').value = div;  // …URL wins
+    $('title_fight').checked = q.get('title') === '1';
+    runPrediction();
+  })();
+</script>
+</body>
+</html>
