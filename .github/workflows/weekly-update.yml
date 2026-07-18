@@ -55,15 +55,18 @@ jobs:
           print("OK: both shipped models are LR — loadable by the serving image.")
           PY
 
-      - name: Commit & push if anything changed (triggers Render redeploy)
+      - name: Commit & push only when new fights were scraped
         run: |
+          # Gate on raw fight data: a week with no new fights rebuilds byte-identically
+          # (deterministic CSVs + models), so there is nothing meaningful to ship. Only
+          # a change under data/raw/ warrants committing + redeploying the demo.
+          if git diff --quiet -- data/raw/; then
+            echo "No new fights this week — skipping deploy (no redeploy churn)."
+            exit 0
+          fi
           git config user.name "Rakan Tahainah"
           git config user.email "tahainahrakan@gmail.com"
           git add data/ models/
-          if git diff --cached --quiet; then
-            echo "No new data this week — nothing to deploy."
-          else
-            git commit -m "Weekly auto-update: retrain through $(date -u +%Y-%m-%d)"
-            git push
-            echo "Pushed refreshed models/data — Render will redeploy."
-          fi
+          git commit -m "Weekly auto-update: retrain through $(date -u +%Y-%m-%d)"
+          git push
+          echo "New fights scraped — pushed refresh; Render will redeploy."

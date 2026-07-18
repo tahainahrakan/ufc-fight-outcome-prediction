@@ -229,13 +229,17 @@ def rebuild_features(fights, stats, fighters) -> dict:
     model_df = build_model_df(fights, stats, fighters)
     train, test, cutoff = rolling_split(model_df)
 
-    model_df.to_csv(FEATURES_CSV, index=False)
-    train.to_csv(TRAIN_CSV, index=False)
-    test.to_csv(TEST_CSV, index=False)
+    # fixed float format so the CSVs serialize identically on any Python/numpy
+    # build (pandas' default shortest-repr drifts across versions) — a rebuild
+    # with no new fights then produces a byte-identical file, i.e. no spurious diff
+    fmt = "%.10g"
+    model_df.to_csv(FEATURES_CSV, index=False, float_format=fmt)
+    train.to_csv(TRAIN_CSV, index=False, float_format=fmt)
+    test.to_csv(TEST_CSV, index=False, float_format=fmt)
 
     # current per-fighter snapshots for the serving app's hypothetical matchups
     snapshots = build_fighter_snapshots(fights, stats, fighters)
-    snapshots.to_csv(SNAPSHOTS_CSV, index=False)
+    snapshots.to_csv(SNAPSHOTS_CSV, index=False, float_format=fmt)
 
     return {"n_fights": len(model_df), "n_train": len(train), "n_test": len(test),
             "n_fighters": len(snapshots), "cutoff": cutoff.date(),
