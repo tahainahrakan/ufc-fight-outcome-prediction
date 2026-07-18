@@ -1,0 +1,16 @@
+# Keep the image lean: only app/, src/, config.yaml, the runtime CSVs the app
+# loads (fighter_snapshots + fights_features), and models/ are needed at serve time.
+.venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+.claude/
+logs/
+notebooks/
+assets/
+data/_html_cache/
+data/raw/
+data/processed/train.csv
+data/processed/test.csv
+.DS_Store

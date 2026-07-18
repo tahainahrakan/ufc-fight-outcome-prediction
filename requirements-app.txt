@@ -1,0 +1,11 @@
+# Runtime-only dependencies for the deployed Flask app (the serving path is
+# xgboost/scraper/notebook-free). Versions pinned to what the shipped models
+# were trained with, so joblib loads them without a version-mismatch warning.
+flask==3.1.3
+gunicorn>=21.2
+pandas==3.0.3
+numpy==2.5.0
+scikit-learn==1.9.0
+scipy==1.18.0
+joblib==1.5.3
+pyyaml==6.0.3
