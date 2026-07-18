@@ -67,9 +67,12 @@ scrape ufcstats  →  clean  →  point-in-time features  →  model  →  Flask
                      preprocessing) engineering)         training)
 ```
 
-The whole thing **retrains itself weekly** (`python -m src.update`, driven by a launchd agent):
-it scrapes new events, rebuilds features on a rolling 12-month temporal holdout, re-benchmarks
-Logistic Regression vs XGBoost, and refits the shipped models on all data.
+The whole thing **retrains itself weekly** (`python -m src.update`): it scrapes new events,
+rebuilds features on a rolling 12-month temporal holdout, re-benchmarks Logistic Regression vs
+XGBoost, and refits the shipped models on all data. A **GitHub Action**
+([`.github/workflows/weekly-update.yml`](.github/workflows/weekly-update.yml)) runs this in the
+cloud every Monday, commits the refreshed models + data, and pushes — which auto-redeploys the
+[live demo](https://ufc-fight-predictor-osdb.onrender.com), so it stays current on its own.
 
 ### Two leakage traps this project takes seriously
 
