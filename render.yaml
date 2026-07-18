@@ -1,0 +1,16 @@
+# Render Blueprint — free web service for the UFC Fight Predictor Flask app.
+#
+# Deploy: https://render.com → New → Blueprint → connect this repo → Apply.
+# Render reads this file, installs the runtime-only deps, and serves the app with
+# gunicorn on the $PORT it provides. One worker + threads keeps memory under the
+# free tier's 512 MB (the app loads ~2,700 fighter snapshots + models at startup).
+services:
+  - type: web
+    name: ufc-fight-predictor
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-app.txt
+    startCommand: gunicorn app.app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 120
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
