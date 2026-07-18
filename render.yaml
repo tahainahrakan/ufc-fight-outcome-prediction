@@ -10,7 +10,12 @@ services:
     runtime: python
     plan: free
     buildCommand: pip install -r requirements-app.txt
-    startCommand: gunicorn app.app:app --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 120
+    startCommand: gunicorn app.app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120 --preload
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.7"
+      # cap glibc malloc arenas — big RAM cut for threaded numpy/pandas on the 512 MB free tier
+      - key: MALLOC_ARENA_MAX
+        value: "2"
+      - key: PYTHONUNBUFFERED
+        value: "1"
