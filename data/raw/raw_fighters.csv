@@ -5,12 +5,12 @@ d1053e55f00e53fe,AJ Cunningham,"5' 10""","71""",Orthodox,"Sep 07, 1994",11-5-0
 003d82fa384ca1d0,Aalon Cruz,"6' 0""","78""",Switch,"Sep 20, 1989",8-4-0
 cf1a88371c8cb690,Aaron Brink,"6' 3""",--,Orthodox,"Nov 12, 1974",26-26-0 (2 NC)
 34c2b3656f88f7ef,Aaron Phillips,"5' 9""","71""",Southpaw,"Aug 05, 1989",12-5-0
-5537efc6e496dd84,Aaron Pico,"5' 8""","70""",Orthodox,"Sep 23, 1996",14-5-0
+5537efc6e496dd84,Aaron Pico,"5' 8""","70""",Orthodox,"Sep 23, 1996",15-5-0
 f2c8ebbeafd45f2b,Aaron Riley,"5' 8""","69""",Southpaw,"Dec 09, 1980",30-14-1
 11f8860028b68fcf,Aaron Rosa,"6' 4""","77""",Orthodox,"May 28, 1983",18-6-0
 d5f820c11a121050,Aaron Simpson,"6' 0""","73""",Orthodox,"Jul 20, 1974",12-5-0
 338a11d3674eb2d4,Aaron Wilkinson,"5' 10""",--,Orthodox,"Jan 31, 1987",11-7-0
-95aff2fd8d09a5f0,Abdul Rakhman Yakhyaev,"6' 2""","78""",Orthodox,"Jan 03, 2001",10-0-0
+95aff2fd8d09a5f0,Abdul Rakhman Yakhyaev,"6' 2""","78""",Orthodox,"Jan 03, 2001",11-0-0
 eae431e70064e046,Abdul Razak Alhassan,"5' 10""","73""",Orthodox,"Aug 11, 1985",12-7-0 (1 NC)
 597499ac7a5aac62,Abdul-Kareem Al-Selwady,"5' 8""","69""",Orthodox,"Apr 10, 1995",16-4-0
 37e03538c960bac6,Abdul-Kerim Edilov,"6' 2""",--,Orthodox,"Nov 25, 1991",17-4-0
@@ -18,7 +18,7 @@ e14b5aa06eea9653,Abel Trujillo,"5' 8""","70""",Orthodox,"Sep 18, 1983",15-8-0 (1
 6448e57a9533b7e4,Abner Lloveras,"5' 11""",--,,"Sep 04, 1982",20-9-1
 46d0a888d87d91ac,Abu Azaitar,"5' 9""","76""",Orthodox,"Mar 10, 1986",14-4-1
 029e1293e609fd74,Abubakar Nurmagomedov,"5' 11""","72""",Orthodox,"Nov 13, 1989",17-4-1
-36b8f265bcd1b7a4,Abus Magomedov,"6' 2""","78""",Orthodox,"Sep 02, 1990",29-7-1
+36b8f265bcd1b7a4,Abus Magomedov,"6' 2""","78""",Orthodox,"Sep 02, 1990",30-7-1
 b27b8881d7444114,Adam Cella,"6' 2""",--,,"Jun 26, 1985",6-8-0
 a01a62132460a98d,Adam Fugitt,"6' 1""","77""",Southpaw,"Jan 12, 1989",10-6-0
 72ffecf712673af1,Adam Milstead,"6' 3""","76""",Orthodox,"Jul 03, 1987",8-4-0
@@ -88,8 +88,8 @@ e8b731feff72294b,Alexa Grasso,"5' 5""","66""",Orthodox,"Aug 09, 1993",18-5-1
 3c6976f8182d9527,Alexander Gustafsson,"6' 5""","79""",Orthodox,"Jan 15, 1987",18-8-0
 262a7d06203657e6,Alexander Hernandez,"5' 9""","72""",Orthodox,"Oct 01, 1992",19-9-0
 f8f1ec513bcfef43,Alexander Munoz,"5' 9""","72""",Switch,"Feb 27, 1990",7-2-0
-e1248941344b3288,Alexander Volkanovski,"5' 6""","71""",Orthodox,"Sep 29, 1988",28-4-0
-279566840aa55bf2,Alexander Volkov,"6' 7""","80""",Orthodox,"Oct 24, 1988",40-11-0
+e1248941344b3288,Alexander Volkanovski,"5' 6""","71""",Orthodox,"Sep 29, 1988",29-4-0
+279566840aa55bf2,Alexander Volkov,"6' 7""","80""",Orthodox,"Oct 24, 1988",41-11-0
 d06f8869449ba7bd,Alexander Yakovlev,"6' 3""","74""",Southpaw,"Jul 18, 1984",24-10-1
 c0badf3243907e59,Alexandr Romanov,"6' 2""","75""",Southpaw,"Dec 11, 1990",18-3-0
 8fd1f27e86661ede,Alexandre Barros,"5' 9""",--,Southpaw,"Nov 19, 1976",22-11-0
@@ -228,7 +228,7 @@ d2cd7a69cc55e7ed,Austin Hubbard,"5' 10""","71""",Orthodox,"Dec 22, 1991",17-10-0
 1d2d98ddd05b38fb,Axel Sola,"6' 0""","74""",Southpaw,"Sep 17, 1997",13-1-1
 3bc3f60b21cddc6a,Azamat Bekoev,"6' 0""","72""",Orthodox,"Dec 30, 1995",20-5-0
 a1b0715c4fd2dbd3,Azamat Gashimov,"5' 6""",--,Orthodox,"Apr 07, 1990",8-3-0
-e90a2f22417af68e,Azamat Murzakanov,"5' 10""","71""",Southpaw,"Apr 12, 1989",16-1-0
+e90a2f22417af68e,Azamat Murzakanov,"5' 10""","71""",Southpaw,"Apr 12, 1989",16-2-0
 7f1bf0c255ec8756,Azat Maksum,"5' 7""","70""",Southpaw,"Feb 02, 1995",15-3-0
 78d48d3874dacafd,Azunna Anyanwu,"6' 1""",--,Orthodox,"Aug 05, 1981",14-5-0
 73c7cfa551289285,BJ Penn,"5' 9""","70""",Orthodox,"Dec 13, 1978",16-14-2
@@ -287,7 +287,7 @@ fb37795db81f93f3,Bogdan Grad,"5' 8""","70""",Orthodox,"Sep 28, 1995",16-4-0
 ef5dcb10d2bd4b0f,Bogdan Guskov,"6' 3""","76""",Orthodox,"Sep 12, 1992",18-4-1
 d6285cba1d1052e0,Bojan Mihajlovic,"5' 11""","73""",Orthodox,"Mar 30, 1980",10-6-0
 fcce75a25c14a804,Bojan Velickovic,"6' 0""","76""",Southpaw,"Dec 18, 1988",15-6-1
-4bdedbdeedff7d1d,Bolaji Oki,"5' 10""","73""",Orthodox,"Nov 15, 1995",10-4-0
+4bdedbdeedff7d1d,Bolaji Oki,"5' 10""","73""",Orthodox,"Nov 15, 1995",10-5-0
 98e946879ba20c0f,Boston Salmon,"5' 9""","69""",Southpaw,"Nov 20, 1990",6-3-0
 7e69a4b0961aa555,Brad Blackburn,"5' 10""","73""",Orthodox,"May 25, 1977",18-13-1 (1 NC)
 4d74641fac830182,Brad Gumm,"5' 11""",--,Orthodox,--,10-6-1 (1 NC)
@@ -368,7 +368,7 @@ de3ed2e152520c8d,Cal Worsham,"5' 11""",--,Orthodox,"Jun 11, 1963",13-10-0
 a0b91014e9d16a76,Cale Yarbrough,"6' 1""",--,Orthodox,"Dec 27, 1986",8-3-0
 8fc9ae9c7527dfcb,Callan Potter,"6' 0""","72""",Orthodox,"Jun 09, 1984",18-9-0
 751de04455cfaac0,Calvin Kattar,"5' 11""","72""",Orthodox,"Mar 26, 1988",23-10-0
-8ebc3a8da015d70c,Cam Rowston,"6' 3""","78""",Orthodox,"Jan 19, 1995",15-3-0
+8ebc3a8da015d70c,Cam Rowston,"6' 3""","78""",Orthodox,"Jan 19, 1995",15-4-0
 3bbcd63a016d9715,Cameron Dollar,"5' 11""",--,Orthodox,"May 12, 1987",11-5-0
 5f3da9a9610d8969,Cameron Else,"5' 9""","71""",Switch,"Apr 27, 1987",10-6-0
 3c8a5200436e19f3,Cameron Saaiman,"5' 8""","67""",Southpaw,"Dec 20, 2000",9-3-0
@@ -513,7 +513,7 @@ d8c7c61b176e3994,Cody Garbrandt,"5' 8""","65""",Orthodox,"Jul 07, 1991",15-8-0
 5904b0b38dc6718d,Cody Pfister,"5' 10""","73""",Orthodox,"Jul 12, 1990",13-6-1
 bf7ad5628363eec9,Cody Stamann,"5' 6""","64""",Orthodox,"Nov 09, 1989",21-8-1
 dc9572dd6ec74859,Colby Covington,"5' 11""","72""",Orthodox,"Feb 22, 1988",17-5-0
-ed7d329d7c29428d,Colby Thicknesse,"5' 7""","69""",Orthodox,"Jun 23, 1999",9-1-0
+ed7d329d7c29428d,Colby Thicknesse,"5' 7""","69""",Orthodox,"Jun 23, 1999",10-1-0
 5df17b3620145578,Cole Escovedo,"5' 7""","72""",Orthodox,"Aug 30, 1981",17-9-0
 282fa667ff9c51ed,Cole Miller,"6' 1""","73""",Orthodox,"Apr 26, 1984",21-11-0 (1 NC)
 56709e66f1c6008f,Cole Smith,"5' 11""","67""",Orthodox,"Apr 05, 1989",7-2-0
@@ -594,7 +594,7 @@ bdcbb976816fd256,Daniel Kelly,"6' 0""","70""",Southpaw,"Oct 31, 1977",13-4-0
 361d49960a196976,Daniel Pineda,"5' 7""","69""",Orthodox,"Aug 06, 1985",28-17-0 (3 NC)
 22edaf53ad59a967,Daniel Roberts,"5' 10""","74""",Southpaw,"Aug 05, 1980",15-7-0
 8a1f3b5c526cd6e6,Daniel Rodriguez,"6' 1""","74""",Southpaw,"Dec 31, 1986",20-6-0
-b67d6bacc68d4c92,Daniel Santos,"5' 7""","67""",Orthodox,"Mar 12, 1995",14-3-0
+b67d6bacc68d4c92,Daniel Santos,"5' 7""","67""",Orthodox,"Mar 12, 1995",15-3-0
 7e47047d0971d566,Daniel Sarafian,"5' 9""","73""",Orthodox,"Aug 21, 1982",10-6-0
 f86cb5f25d545e0e,Daniel Spitz,"6' 7""","82""",Orthodox,"Jul 31, 1990",6-3-0
 87f3bbf52e6c9dc9,Daniel Spohn,"6' 4""","79""",Southpaw,"Oct 12, 1984",15-6-0
@@ -713,7 +713,7 @@ b14a68c533f4a4aa,Dokonjonosuke Mishima,"5' 7""",--,Southpaw,"Apr 19, 1972",21-7-
 4bf6b225ff6099c4,Domingo Pilarte,"6' 0""","73""",Southpaw,"Jan 05, 1990",8-3-0 (1 NC)
 2de91c2244ad7e89,Dominic Waters,"6' 1""","79""",Orthodox,"Apr 11, 1989",9-5-0
 10f3ba6cd2f44a97,Dominick Cruz,"5' 8""","68""",Orthodox,"Mar 09, 1985",24-4-0
-2e19380f34871c6a,Dominick Reyes,"6' 4""","77""",Southpaw,"Dec 26, 1989",16-5-0
+2e19380f34871c6a,Dominick Reyes,"6' 4""","77""",Southpaw,"Dec 26, 1989",17-5-0
 68c11c27d4d56572,Dominique Steele,"5' 10""","74""",Orthodox,"Jan 27, 1988",14-9-0
 271fe91f4ba9d2c5,Don Frye,"6' 1""",--,Orthodox,"Nov 23, 1965",20-9-1 (1 NC)
 68c7ad953455c73f,Don Madge,"6' 0""","72""",Southpaw,"Nov 12, 1990",9-3-1
@@ -937,7 +937,7 @@ fa37628269132d1a,Godofredo Pepey,"5' 7""","73""",Orthodox,"Jul 02, 1987",13-6-0
 4690d47bf725fd98,Gokhan Saki,"6' 0""","73""",Orthodox,"Oct 19, 1983",1-2-0
 1a97a3ef4c758fae,Gokhan Saricam,"6' 3""","75""",Orthodox,"Feb 28, 1991",12-2-0
 132f860d02953f4c,Goran Reljic,"6' 3""","81""",Southpaw,"Mar 20, 1984",15-8-0
-99bd51917728c25d,Grant Dawson,"5' 10""","72""",Switch,"Feb 20, 1994",24-3-1
+99bd51917728c25d,Grant Dawson,"5' 10""","72""",Switch,"Feb 20, 1994",25-3-1
 7d96bc577e5178b2,Gray Maynard,"5' 9""","70""",Orthodox,"May 09, 1979",13-7-1 (1 NC)
 85073dbd1be65ed9,Greg Hardy,"6' 5""","80""",Orthodox,"Jul 28, 1988",7-5-0 (1 NC)
 9c669abd35b2522f,Greg Soto,"5' 11""","73""",Orthodox,"Jun 03, 1986",9-4-0
@@ -1004,7 +1004,7 @@ b4bc2e3353a770b5,Ian Freeman,"5' 11""",--,Orthodox,"Nov 10, 1966",20-7-1
 eea0274e153256a0,Ian Loveland,"5' 8""",--,Orthodox,"Sep 07, 1983",18-10-0
 442c9011034ae1fd,Ian Machado Garry,"6' 3""","74""",Orthodox,"Nov 17, 1997",17-2-0
 701e057d63c124d9,Ian McCall,"5' 5""","64""",Orthodox,"May 07, 1984",13-5-1
-abcf2cc6efc42031,Iasmin Lucindo,"5' 3""","66""",Orthodox,"Jan 08, 2002",18-6-0
+abcf2cc6efc42031,Iasmin Lucindo,"5' 3""","66""",Orthodox,"Jan 08, 2002",19-6-0
 6e8f1bcdda94ff45,Ibo Aslan,"6' 3""","77""",Orthodox,"Apr 23, 1996",14-4-0
 49efbdc6c9f650c4,Icho Larenas,"6' 3""",--,Orthodox,"Mar 12, 1980",6-5-0
 e4a47b07044ddd72,Ignacio Bahamondes,"6' 3""","75""",Orthodox,"Aug 27, 1997",18-7-0
@@ -1061,7 +1061,7 @@ b8a85389d115e35a,Jack Shore,"5' 8""","71""",Orthodox,"Feb 06, 1995",17-3-0
 4985113c0928aa62,Jackie Lee,--,--,,--,0-1-0
 3eeec2f53cebdf12,Jackson McVey,"6' 4""","77""",Southpaw,"Mar 25, 1999",8-2-0
 637bd06c32219f0b,Jacob Kilburn,"5' 9""","72""",Orthodox,"Jun 28, 1995",8-4-0
-d4270315cbcf2569,Jacob Malkoun,"5' 9""","73""",Orthodox,"Aug 26, 1995",10-3-0
+d4270315cbcf2569,Jacob Malkoun,"5' 9""","73""",Orthodox,"Aug 26, 1995",10-4-0
 6f81b6de2557739a,Jacob Volkmann,"5' 9""","71""",Southpaw,"Sep 05, 1980",19-7-0
 85497ffd934ecf7e,Jacobe Smith,"5' 10""","72""",Southpaw,"Jan 17, 1996",13-0-0
 e3964ece586e0635,Jacqueline Cavalcanti,"5' 8""","70""",Orthodox,"Aug 29, 1997",10-2-0
@@ -1512,7 +1512,7 @@ ce47f49e5c386a9c,Kit Cope,"6' 0""",--,Orthodox,"Mar 17, 1977",6-7-0
 9f5e3c20ce40b344,Klaudia Sygula,"5' 8""","69""",Orthodox,"Dec 30, 1998",8-3-0
 102a8fdf8cbf7467,Kleydson Rodrigues,"5' 5""","67""",Orthodox,"Oct 22, 1995",8-4-0
 7279654c7674cd24,Klidson Abreu,"6' 0""","74""",Orthodox,"Dec 24, 1992",15-4-0 (1 NC)
-aebaa8cec15b083d,Kody Steele,"5' 9""","71""",Orthodox,"Apr 21, 1995",8-1-0
+aebaa8cec15b083d,Kody Steele,"5' 9""","71""",Orthodox,"Apr 21, 1995",9-1-0
 2a6f8136da1e52c0,Koji Kitao,"6' 7""",--,Southpaw,"Oct 12, 1963",1-2-0
 01daf32100ed7517,Koji Oishi,"5' 8""",--,Orthodox,"May 31, 1977",25-10-10
 22061ff217907c78,Konstantin Erokhin,"5' 11""",--,Orthodox,"Jan 31, 1983",9-3-0
@@ -1586,10 +1586,10 @@ dab8cfbb6b1db10a,Livinha Souza,"5' 3""","63""",Orthodox,"Mar 11, 1991",14-4-0
 6776260cb0aef647,Logan Clark,"6' 2""",--,Orthodox,"Feb 16, 1985",18-6-0
 8c169fbe1ac33637,Loik Radzhabov,"5' 11""","69""",Orthodox,"Sep 17, 1990",18-6-1
 4e30e4250cb08b61,Loma Lookboonmee,"5' 1""","61""",Orthodox,"Jan 18, 1996",10-5-0
-bb2c3c3a466224af,Lone'er Kavanagh,"5' 6""","67""",Orthodox,"Jun 09, 1999",10-2-0
+bb2c3c3a466224af,Lone'er Kavanagh,"5' 6""","67""",Orthodox,"Jun 09, 1999",11-2-0
 8e5d953bdb9ae5e7,Loopy Godinez,"5' 2""","61""",Orthodox,"Sep 06, 1993",15-6-0
 9450848a71d53776,Lorenz Larkin,"5' 11""","72""",Orthodox,"Sep 03, 1986",18-6-0 (1 NC)
-5b43d68174b6e2ab,Losene Keita,"5' 7""","72""",Orthodox,"Dec 30, 1997",17-2-0
+5b43d68174b6e2ab,Losene Keita,"5' 7""","72""",Orthodox,"Dec 30, 1997",17-3-0
 cdb7b38b1b357f26,Louie Sutherland,"6' 3""","76""",Orthodox,"Feb 08, 1994",11-6-0
 afe8d5b39ff7fca2,Louis Cosce,"5' 9""","71""",Orthodox,"Aug 27, 1995",7-2-0
 b72a60a0cadff408,Louis Gaudinot,"5' 3""","63""",Orthodox,"Aug 28, 1984",8-4-0 (1 NC)
@@ -1800,7 +1800,7 @@ bd532e9a2b93870c,Melissa Mullins,"5' 7""","68""",Orthodox,"Jul 23, 1991",7-3-0
 a52bc1e62cf0b7c6,Melsik Baghdasaryan,"5' 9""","70""",Southpaw,"Jan 28, 1992",8-4-0
 81ca2c245b19b3c5,Melton Bowen,"6' 0""",--,Orthodox,"Jul 16, 1969",0-1-0
 ccd1299e0345e0ce,Melvin Guillard,"5' 9""","71""",Orthodox,"Mar 30, 1983",32-18-2 (3 NC)
-c03520b5c88ed6b4,Merab Dvalishvili,"5' 6""","68""",Orthodox,"Jan 10, 1991",21-5-0
+c03520b5c88ed6b4,Merab Dvalishvili,"5' 6""","68""",Orthodox,"Jan 10, 1991",21-6-0
 01c9e4013afce141,Michael Aswell Jr.,"5' 8""","69""",Orthodox,"Sep 27, 2000",12-5-0
 2b93ebd9f5417ad2,Michael Bisping,"6' 1""","75""",Orthodox,"Feb 28, 1979",30-9-0
 4b93a88f3b1de35b,Michael Chandler,"5' 8""","71""",Orthodox,"Apr 24, 1986",23-11-0
@@ -1890,7 +1890,7 @@ cc1a8b4b38b92c6d,Montel Jackson,"5' 10""","75""",Southpaw,"Apr 24, 1992",16-4-0
 baf942f4bcb09894,Moti Horenstein,"6' 4""",--,Orthodox,"Mar 23, 1964",1-6-0
 d34636a85f0f4c90,Motonobu Tezuka,"5' 7""",--,Southpaw,"Aug 29, 1987",28-12-7
 49ee5024966efc0d,Mounir Lazzez,"6' 1""","76""",Orthodox,"Nov 16, 1987",11-3-0
-76e2870ffafbe38f,Movsar Evloev,"5' 7""","72""",Orthodox,"Feb 11, 1994",20-0-0
+76e2870ffafbe38f,Movsar Evloev,"5' 7""","72""",Orthodox,"Feb 11, 1994",20-1-0
 75353550928a7921,Muhammad Mokaev,"5' 7""","70""",Orthodox,"Jul 30, 2000",13-0-0 (1 NC)
 8d11d9c13e2ccdf7,Muhammad Naimov,"5' 9""","70""",Orthodox,"Aug 07, 1994",13-5-0
 a54660deb6a8489c,Muin Gafurov,"5' 7""","68""",Orthodox,"May 17, 1996",20-7-0
@@ -1949,9 +1949,9 @@ b13da0b1a3aed3e7,Nick Ring,"6' 0""","74""",Southpaw,"Feb 10, 1979",14-4-0
 7d3caf0f96f1b33d,Nick Thompson,"6' 1""","74""",Orthodox,"Jun 23, 1981",38-14-1
 8c57c7b8c3bab0eb,Nicolae Negumereanu,"6' 0""","78""",Orthodox,"Sep 04, 1994",13-2-0
 9d19d9e4aa2662e8,Nicolas Dalby,"5' 11""","74""",Orthodox,"Nov 16, 1984",24-6-1 (2 NC)
-fc0a4053eb8a3a59,Nicolle Caliari,"5' 3""","62""",Orthodox,"Nov 04, 1996",9-4-0
+fc0a4053eb8a3a59,Nicolle Caliari,"5' 3""","62""",Orthodox,"Nov 04, 1996",9-5-0
 6fb1ba67bef41b37,Nik Lentz,"5' 8""","68""",Orthodox,"Aug 13, 1984",30-12-2 (1 NC)
-1091d4d957141094,Nikita Krylov,"6' 3""","77""",Orthodox,"Mar 07, 1992",31-12-0
+1091d4d957141094,Nikita Krylov,"6' 3""","77""",Orthodox,"Mar 07, 1992",31-13-0
 39cc64bf0a269db9,Niklas Backstrom,"6' 1""",--,Orthodox,"Aug 22, 1989",11-3-0 (1 NC)
 62f7097c04311193,Niklas Stolze,"6' 1""","74""",Switch,"Dec 28, 1992",12-6-0
 d8da10db80131bec,Niko Price,"6' 0""","76""",Orthodox,"Sep 29, 1989",17-11-0 (2 NC)
@@ -1969,7 +1969,7 @@ f2b3f4ef3f780168,Nora Cornolle,"5' 7""","67""",Orthodox,"Dec 06, 1989",10-4-0
 d3f5d33d61cd00c9,Norma Dumont,"5' 7""","67""",Orthodox,"Oct 01, 1990",13-4-0
 14ff46596ad80609,Norman Parke,"5' 11""","70""",Southpaw,"Dec 22, 1986",23-6-1
 49d2a08964c5eb11,Nursulton Ruziboev,"6' 5""","76""",Orthodox,"Nov 19, 1993",37-10-2 (2 NC)
-ca28cdf526d6b6e9,Nurullo Aliev,"5' 10""","72""",Orthodox,"Dec 08, 2000",12-0-0
+ca28cdf526d6b6e9,Nurullo Aliev,"5' 10""","72""",Orthodox,"Dec 08, 2000",12-1-0
 17cb6d8e8187f304,Nyamjargal Tumendemberel,"5' 7""","71""",Orthodox,"Mar 22, 1998",10-1-0
 6b56e94a59b7b134,Oban Elliott,"6' 0""","72""",Orthodox,"Dec 19, 1997",12-5-0
 6d68c1afe954f121,Ode Osbourne,"5' 7""","73""",Southpaw,"Jan 09, 1992",13-9-0 (2 NC)
@@ -2044,7 +2044,7 @@ c3ea8deeba00462b,Pete Spratt,"5' 9""",--,Orthodox,"Jan 09, 1971",25-23-0
 6291ac0a3726732f,Pete Williams,"6' 3""",--,Orthodox,"Jul 10, 1975",12-6-0
 d21113c9ff3788ae,Peter Barrett,"5' 10""","73""",Southpaw,"Aug 10, 1986",11-5-0
 1fcfc3709fe58151,Peter Sobotta,"6' 0""","75""",Southpaw,"Jan 11, 1987",17-7-1
-d661ce4da776fc20,Petr Yan,"5' 7""","67""",Switch,"Feb 11, 1993",20-5-0
+d661ce4da776fc20,Petr Yan,"5' 7""","67""",Switch,"Feb 11, 1993",21-5-0
 1652f3213655b935,Phil Baroni,"5' 9""","72""",Orthodox,"Apr 16, 1976",15-18-0
 902ab9197b83d0db,Phil Davis,"6' 2""","79""",Orthodox,"Sep 25, 1984",17-4-0 (1 NC)
 ba043b03eb799063,Phil Harris,"5' 4""","65""",Orthodox,"Sep 04, 1983",22-12-0 (2 NC)
@@ -2082,7 +2082,7 @@ d6a8edb7410223a0,Rafael Tobias,"6' 2""","74""",Orthodox,"Mar 20, 2003",14-3-0
 15b1b21cd743d652,Rafaello Oliveira,"5' 8""","71""",Orthodox,"Jan 26, 1982",17-8-0
 577ec7e108b94be3,Rainy Martinez,"6' 0""",--,Orthodox,--,0-2-0
 abd5fb12437eda21,Ramazan Emeev,"5' 10""","76""",Southpaw,"May 23, 1987",20-6-0
-7d0a1968b38ca439,Ramazan Temirov,"5' 4""","63""",Orthodox,"Jan 31, 1997",20-3-0
+7d0a1968b38ca439,Ramazan Temirov,"5' 4""","63""",Orthodox,"Jan 31, 1997",20-4-0
 d1152823307d7e7c,Rameau Thierry Sokoudjou,"5' 10""","78""",Orthodox,"Apr 18, 1984",18-18-0
 915c8d39d4a0e7d1,Ramiro Hernandez,"5' 9""",--,Orthodox,"Jul 22, 1986",19-9-0
 3d074044a33825e7,Ramiz Brahimaj,"5' 10""","72""",Orthodox,"Nov 17, 1992",13-7-0
@@ -2152,7 +2152,7 @@ cd3d7e37ff2d679c,Ricky Turcios,"5' 9""","71""",Orthodox,"Jun 05, 1993",13-6-0
 f9ae6914f604aa9f,Rin Nakai,"5' 1""",--,Orthodox,"Oct 22, 1986",19-2-1
 8f765fd5775a8873,Rinat Fakhretdinov,"6' 0""","74""",Orthodox,"Sep 28, 1991",24-1-1
 d8c811df0386d5e8,Rinya Nakamura,"5' 7""","68""",Southpaw,"Mar 23, 1995",10-2-0
-739fd4fbb5d862f4,Rizvan Kuniev,"6' 4""","76""",Orthodox,"Mar 10, 1992",14-3-1 (1 NC)
+739fd4fbb5d862f4,Rizvan Kuniev,"6' 4""","76""",Orthodox,"Mar 10, 1992",14-4-1 (1 NC)
 1c86754617d9813a,Roan Carneiro,"5' 11""","76""",Orthodox,"Jun 02, 1978",21-11-0
 a7d687e6ecb30981,Rob Broughton,"6' 2""","74""",Orthodox,"Mar 03, 1983",16-7-1
 dc0f07928009a127,Rob Emerson,"5' 9""","70""",Orthodox,"Jul 30, 1981",18-12-0 (1 NC)
@@ -2721,14 +2721,14 @@ e03187ec8b5b6abc,RJ Harris,"6' 3""","78""",Orthodox,"Oct 01, 1998",6-1-0
 99223fbb4a05326b,Damian Rzepecki,"5' 10""","71""",Orthodox,"Nov 23, 2001",10-1-0
 b01a5e0dcd9f231d,Muhammad Saidov,"6' 2""","73""",Orthodox,"Jan 10, 1996",10-0-0
 bc5a51159ec2fdf2,Magomed Tuchalov,"6' 3""","78""",Orthodox,"Dec 30, 1999",7-0-0
-f7adc1fd115f8fdd,Abubakar Vagaev,"5' 11""","73""",Orthodox,"Apr 14, 1993",25-4-0
+f7adc1fd115f8fdd,Abubakar Vagaev,"5' 11""","73""",Orthodox,"Apr 14, 1993",26-4-0
 025c1ee70b2cedf4,Vlasto Cepo,"6' 0""","73""",Orthodox,"Jan 25, 1995",14-4-0
 037cfd34a27d59e9,Michael Oliveira,"6' 1""","78""",Orthodox,"Jan 21, 1998",10-0-0
 182a73d5b4e57871,Jovan Leka,"6' 4""","75""",Orthodox,"Mar 15, 2002",14-2-0
 56bf3ed155bd0fcd,Alexander Poppeck,"6' 2""","75""",Orthodox,"Apr 06, 1992",21-6-0 (1 NC)
 5847c1a960bb23af,Marina Spasic,"5' 4""","64""",Orthodox,"Jul 11, 1994",7-2-0
 5f926979c980b87e,Borislav Nikolic,"5' 9""","72""",Orthodox,"Jan 29, 1993",17-2-0
-6266abf6e4245c72,Noah Gugnon,"5' 11""","71""",Orthodox,"Oct 18, 2000",10-2-0
+6266abf6e4245c72,Noah Gugnon,"5' 11""","71""",Orthodox,"Oct 18, 2000",10-3-0
 dfcadfcbd3a3f097,Milos Janicic,"5' 11""","71""",Orthodox,"May 03, 1997",19-4-0
 eabece0edc2d62ca,Nina Milosevic,"5' 5""","67""",Orthodox,"Aug 08, 1996",9-1-0
 1f8cd7634e8286ff,Jose Montanha,"6' 4""","76""",Orthodox,"Aug 25, 1996",7-1-0
@@ -2773,3 +2773,4 @@ a1a91dbf41a029c4,Tina Black,"5' 4""","63""",Orthodox,"May 06, 1996",17-4-0 (1 NC
 91cd52cb92dfdd52,Louis Jourdain,"5' 9""","69""",Orthodox,"Mar 13, 1997",9-4-0
 d84033157714ee94,Cristian Perez,"5' 9""","72""",Orthodox,"Aug 17, 1999",16-2-0
 e9f9add1481fc11c,Javad Mahjoub,"6' 1""","76""",Orthodox,"May 26, 1991",5-1-0
+a24bc9922ee76e9f,Asaf Chopurov,"5' 7""","67""",Orthodox,"Nov 17, 2001",11-1-0
